@@ -1,0 +1,10 @@
+
+#content{
+	width: calc(100% - 2em);
+	max-width: 70em;
+	margin: auto;
+	text-align: center;
+	background-color: #FFF;
+	border: 1px solid black;
+	height:  100em;
+}

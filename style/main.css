@@ -1,0 +1,18 @@
+@import url("/style/header.css");
+@import url("/style/content.css");
+@import url("/style/footer.css");
+
+html{
+	background-color: #000;
+	width: 100%;
+	background-image: url(/img/dots.gif);
+	background-size: 256px;
+	font-family: LatoLatin-Regular;
+}
+
+
+body{
+	width: 100%;
+	margin: 0;
+	background-color: rgba(255, 230, 128, 0.75);
+}

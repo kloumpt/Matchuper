@@ -1,0 +1,15 @@
+<nav >
+	<ol id="nav-menu" class="top-bar">
+		<li id="site-title">
+			<p class="nav-menu-element">matchuper</p>
+		</li>
+		{{#each nav_menu_elements}}
+			<li>
+				<a href="/page/{{name}}" class="nav-menu-element {{#if selected }}current-menu-element{{/if}}">{{name}}</a>
+			</li>
+		{{/each}}
+		<li id="top-button">
+			<a href="#top" class="nav-menu-element">&#9650;</a>
+		</li>
+	</ol>
+</nav>

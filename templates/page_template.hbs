@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+	{{> structure/head}}
+	<body name="top">
+		{{> structure/header}}
+
+		<div id="content">
+			{{~#block content}}
+			{{/block~}}
+		</div>
+
+		{{> structure/footer}}
+	</body>
+	<script src="/code/main.js"></script>
+</html>
