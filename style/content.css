@@ -2,17 +2,23 @@
 #content{
 	width: calc(100% - 2em);
 	max-width: 70em;
+	min-height: 50em;
 	margin: auto;
 	padding-bottom: 2em;
 	text-align: center;
-	background-color: #FFF;
+	background-color: #666;
 	border: 1px solid #666;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	overflow: hidden;
 }
 
 #content h1, #content h2, #content h3, #content h4{
 	color: #666;
+}
+
+#query-form{
+	background-color: #FFF;
 }
 
 #query-input {
@@ -21,7 +27,6 @@
 	margin-bottom: 0.5em;
 	padding-bottom: 0.25em;
 	border: unset;
-	border-bottom: 1px solid #666;
 	outline:0;
 	
 	text-align: center;
