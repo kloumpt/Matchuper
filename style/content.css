@@ -3,12 +3,57 @@
 	width: calc(100% - 2em);
 	max-width: 70em;
 	margin: auto;
+	padding-bottom: 2em;
 	text-align: center;
 	background-color: #FFF;
 	border: 1px solid #666;
-	height:  100em;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
+
 #content h1, #content h2, #content h3, #content h4{
-	
 	color: #666;
 }
+
+#query-input {
+	min-width: 20em;
+	margin-top: 0.25em;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.25em;
+	border: unset;
+	border-bottom: 1px solid #666;
+	outline:0;
+	
+	text-align: center;
+	font-size: 2em;
+}
+
+
+.search-results-table {
+	width: 100%;
+	background-color: #666;
+	display: table;
+	padding-bottom: 2em;
+}
+
+
+.search-results-row {
+	display: table-row;
+}
+
+
+.search-results-item {
+	background-color: #666;
+	display: table-cell;
+	padding-top: 2em;
+}
+
+
+.search-result {
+	width: 128px;
+	height: 128px;
+	margin: auto;
+	background-color: #FFF;
+	word-wrap: break-word;
+}
+

@@ -70,8 +70,10 @@ fn menu_items(current_item: &str) -> Vec<MenuItem> {
 }
 
 
-fn base_page_data(data: &mut BTreeMap<String, Json>) {
-data.insert("nav_menu_elements".to_string(), menu_items("search").to_json());
+fn base_page_data(data: &mut BTreeMap<String, Json>, page_name: &str) {
+	data.insert("nav_menu_elements".to_string(), menu_items(page_name).to_json());
+	data.insert("server_adress".to_string(), get_adress().to_json());
+	data.insert("server_port".to_string(), get_port().to_json());
 
 }
 
@@ -97,7 +99,7 @@ fn error_404(_: &mut Request) -> IronResult<Response> {
     let mut resp = Response::with(status::NotFound);
 	let mut data = BTreeMap::new();
 
-	base_page_data(&mut data);
+	base_page_data(&mut data, "404");
 
     data.insert("parent".to_string(), "page_template".to_json());
     data.insert("page-name".to_string(), "404".to_json());
@@ -121,7 +123,7 @@ fn search(_: &mut Request) -> IronResult<Response> {
     let mut resp = Response::new();
 	let mut data = BTreeMap::new();
 
-	base_page_data(&mut data);
+	base_page_data(&mut data, "search");
 
     data.insert("parent".to_string(), "page_template".to_json());
     data.insert("page-name".to_string(), "search".to_json());
@@ -135,12 +137,11 @@ fn compare(_: &mut Request) -> IronResult<Response> {
     let mut resp = Response::new();
 	let mut data = BTreeMap::new();
 
-	base_page_data(&mut data);
+	base_page_data(&mut data, "compare");
 
 	data.insert("parent".to_string(), "page_template".to_json());
 	data.insert("page-name".to_string(), "compare".to_json());
     data.insert("title".to_string(), "Compare!".to_json());
-    data.insert("nav_menu_elements".to_string(), menu_items("compare").to_json());
 
     resp.set_mut(Template::new("page/compare", data)).set_mut(status::Ok);
 
@@ -151,12 +152,11 @@ fn stats(_: &mut Request) -> IronResult<Response> {
     let mut resp = Response::new();
 	let mut data = BTreeMap::new();
 
-	base_page_data(&mut data);
+	base_page_data(&mut data, "stats");
 
 	data.insert("parent".to_string(), "page_template".to_json());
 	data.insert("page-name".to_string(), "stats".to_json());
     data.insert("title".to_string(), "Stats!".to_json());
-    data.insert("nav_menu_elements".to_string(), menu_items("stats").to_json());
 
     resp.set_mut(Template::new("page/stats", data)).set_mut(status::Ok);
 
