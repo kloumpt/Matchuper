@@ -80,15 +80,19 @@ a.nav-menu-element{
 }
 
 
-.current-menu-element, a.nav-menu-element:hover{
+.current-menu-element{
 	color: #FFF;
-	background-color: #09F !important;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+	background-color: #FD0 !important;
 }
 a.nav-menu-element:hover{
-	text-shadow: 2px 2px 5px #000;
+	text-shadow: 0px 0px 5px #000;
 	transition: text-shadow 0.25s ease-in-out;
 }
 
+.current-menu-element, a.nav-menu-element:hover{
+	background-color: #FD0 !important;
+}
 
 #site-title{
 	width: 100%;
@@ -127,7 +131,10 @@ a.nav-menu-element:hover{
 	padding-right: 1em;
 	font-size: 4em;
 	color: #FFF;
-	text-transform: capitalize;
-	background-color: #09F;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+	
+	background-color: #FD0;
 	font-family: LatoLatin-SemiBold;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }

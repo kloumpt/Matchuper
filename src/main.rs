@@ -39,12 +39,10 @@ use staticfile::Static;
 
 use std::path::Path;
 
-pub mod data_types;
+use std::env;
 
 use iron::{ AfterMiddleware};
 
-static SERVER_ADRESS: &'static str = "192.168.1.106";
-static SERVER_PORT: &'static str = "8080";
 
 struct MenuItem {
 	name: String,
@@ -81,7 +79,7 @@ struct Custom404;
 impl AfterMiddleware for Custom404 {
     fn catch(&self, _: &mut Request, err: IronError) -> IronResult<Response> {
 	    let mut resp = Response::new();
-		resp.headers.set(Location(format!("http://{}:{}/error/404", SERVER_ADRESS, SERVER_PORT).to_owned()));
+		resp.headers.set(Location(format!("http://{}:{}/error/404", get_adress(), get_port()).to_owned()));
 		resp.set_mut(status::MovedPermanently);
 
 
@@ -114,7 +112,7 @@ fn error_404(_: &mut Request) -> IronResult<Response> {
 fn index(_: &mut Request) -> IronResult<Response> {
 
     let mut resp = Response::new();
-	resp.headers.set(Location(format!("http://{}:{}/page/search", SERVER_ADRESS, SERVER_PORT).to_owned()));
+	resp.headers.set(Location(format!("http://{}:{}/page/search", get_adress(), get_port()).to_owned()));
 	resp.set_mut(status::MovedPermanently);
 
 	Ok(resp)
@@ -165,9 +163,28 @@ fn stats(_: &mut Request) -> IronResult<Response> {
     Ok(resp)
 }
 
+fn get_adress() -> String{
+
+	match env::args().nth(1){
+		Some(value)=>{
+			value
+		},
+		None=>"localhost".to_string()
+	}
+}
+fn get_port() -> String{
+
+	match env::args().nth(2){
+		Some(value)=>{
+			value
+		},
+		None=>"8080".to_string()
+	}
+}
 
 
 fn main() {
+
     env_logger::init().unwrap();
 
     let mut hbse = HandlebarsEngine::new();
@@ -200,6 +217,6 @@ fn main() {
 	mount.mount("code", Static::new(Path::new("code/")));
 	mount.mount("img", Static::new(Path::new("img/")));
 
-    println!("Server running at http://localhost:8080/");
-    Iron::new(mount).http(format!("{}:{}", SERVER_ADRESS, SERVER_PORT).as_str()).unwrap();
+    println!("Server running at http://{}:{}", get_adress(), get_port());
+    Iron::new(mount).http(format!("{}:{}", get_adress(), get_port()).as_str()).unwrap();
 }
