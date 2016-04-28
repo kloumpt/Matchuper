@@ -1,7 +1,7 @@
 
 header{
 	width: 100%;
-	min-height: 10em;
+	min-height: 5em;
 	margin: auto;
 	text-align: center;
 }
@@ -17,7 +17,8 @@ header{
 	margin-right: auto;
 	margin-left: auto;
 	
-	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+	background-color: rgba(102, 102, 102, 0.9);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
@@ -30,7 +31,6 @@ nav{
 
 
 #nav-menu {
-	background-color: #666;
 	text-align: left;
 	max-width: 72em;
 	width: 100%;

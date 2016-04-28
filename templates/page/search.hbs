@@ -1,46 +1,12 @@
 {{#partial content}}
 
-	<form id="query-form" action="http://{{server_adress}}:{{server_port}}/" method="get">
+	<form id="query-form" action="#" onsubmit="return submitSearchQuery(this);" method="get">
 		<input type="text" name="query" id="query-input" placeholder="Enter a movie quote"></input>
 	</form>
-	<div class="search-results-table">
-		<div class="search-results-row">
-			<div class="search-results-item">
-				<p class="search-result">8-Mile2002DvDripEng-BugZ</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">besthd-8mile-1080p</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">KissMeDeadly19552397FPS</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">Madhouse-1974</p>
-			</div>
-		</div>
-		<div class="search-results-row">
-			<div class="search-results-item">
-				<p class="search-result">Leila-1996-Eng</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">South-Park-S16E02-Cash-For-Gold</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">Stormhouse</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">The-Young-Ones-2x04-Sick</p>
-			</div>
-		</div>
 
-		<div class="search-results-row">
-			<div class="search-results-item">
-				<p class="search-result">The-Young-Ones-1x06-Flood</p>
-			</div>
-			<div class="search-results-item">
-				<p class="search-result">South-Park-S16E04-Jewpacabra</p>
-			</div>
-		</div>
+	<div id="search-results" class="search-results-table">
 	</div>
+
+	<script src="/code/search_handler.js"></script>
 {{/partial}}
 {{~> (parent)~}}
