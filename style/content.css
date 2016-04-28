@@ -17,21 +17,29 @@
 	color: #666;
 }
 
-#query-form{
+#query-form, .page-title-wrapper{
 	background-color: #FFF;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 #query-input {
-	min-width: 20em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	padding-bottom: 0.25em;
 	border: unset;
-	border-bottom: 1px solid #666;
 	outline:0;
 	
+}
+
+#query-input, .page-title {
+	background-color: #FFF;
+	min-width: 20em;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 0.25em;
+	border-bottom: 1px solid #666;
+	
 	text-align: center;
-	font-size: 2em;
+	font-size: 1.5em;
+	display: inline-block;
 }
 
 

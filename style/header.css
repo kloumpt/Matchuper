@@ -1,7 +1,7 @@
 
 header{
 	width: 100%;
-	min-height: 5em;
+	min-height: 10em;
 	margin: auto;
 	text-align: center;
 }
@@ -111,15 +111,17 @@ a.nav-menu-element:hover{
 	min-width: 3em;
 }
 #top-button a{
+	min-width: 1.25em;
 	padding-top: 0;
   transition: padding 0.2s ease-in-out;
-    padding: 0px;
-    background: #F40;
+	padding: 0px;
 	position: absolute;
+	background: #09F;
 	top:0;
 }
 
 #top-button a:hover{
+	background: #F40 !important;
 	padding-top: 0.5em;
 }
 

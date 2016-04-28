@@ -66,7 +66,7 @@ impl ToJson for MenuItem {
 
 
 fn menu_items(current_item: &str) -> Vec<MenuItem> {
-	vec![ MenuItem::new("search".to_string(), "search" == current_item), MenuItem::new("compare".to_string(), "compare" == current_item), MenuItem::new("stats".to_string(), "stats" == current_item)]
+	vec![ MenuItem::new("search".to_string(), "search" == current_item), MenuItem::new("compare".to_string(), "compare" == current_item), MenuItem::new("stats".to_string(), "stats" == current_item), MenuItem::new("about".to_string(), "about" == current_item)]
 }
 
 
@@ -95,21 +95,6 @@ impl AfterMiddleware for Custom404 {
     }
 }
 
-fn error_404(_: &mut Request) -> IronResult<Response> {
-    let mut resp = Response::with(status::NotFound);
-	let mut data = BTreeMap::new();
-
-	base_page_data(&mut data, "404");
-
-    data.insert("parent".to_string(), "page_template".to_json());
-    data.insert("page-name".to_string(), "404".to_json());
-    data.insert("title".to_string(), "404 Error: page not found!".to_json());
-
-    resp.set_mut(Template::new("error/404", data));
-	resp.set_mut(status::NotFound);
-
-    Ok(resp)
-}
 
 fn index(_: &mut Request) -> IronResult<Response> {
 
@@ -119,6 +104,23 @@ fn index(_: &mut Request) -> IronResult<Response> {
 
 	Ok(resp)
 }
+
+fn error_404(_: &mut Request) -> IronResult<Response> {
+    let mut resp = Response::with(status::NotFound);
+	let mut data = BTreeMap::new();
+
+	base_page_data(&mut data, "404");
+
+    data.insert("parent".to_string(), "page_template".to_json());
+    data.insert("page_name".to_string(), "404".to_json());
+    data.insert("title".to_string(), "404 Error: page not found!".to_json());
+
+    resp.set_mut(Template::new("error/404", data));
+	resp.set_mut(status::NotFound);
+
+    Ok(resp)
+}
+
 fn search(_: &mut Request) -> IronResult<Response> {
     let mut resp = Response::new();
 	let mut data = BTreeMap::new();
@@ -126,9 +128,22 @@ fn search(_: &mut Request) -> IronResult<Response> {
 	base_page_data(&mut data, "search");
 
     data.insert("parent".to_string(), "page_template".to_json());
-    data.insert("page-name".to_string(), "search".to_json());
-    data.insert("title".to_string(), "Search!".to_json());
+    data.insert("page_name".to_string(), "search".to_json());
     resp.set_mut(Template::new("page/search", data)).set_mut(status::Ok);
+
+    Ok(resp)
+}
+
+
+fn about(_: &mut Request) -> IronResult<Response> {
+    let mut resp = Response::new();
+	let mut data = BTreeMap::new();
+
+	base_page_data(&mut data, "about");
+
+    data.insert("parent".to_string(), "page_template".to_json());
+    data.insert("page_name".to_string(), "about".to_json());
+    resp.set_mut(Template::new("page/about", data)).set_mut(status::Ok);
 
     Ok(resp)
 }
@@ -140,9 +155,7 @@ fn compare(_: &mut Request) -> IronResult<Response> {
 	base_page_data(&mut data, "compare");
 
 	data.insert("parent".to_string(), "page_template".to_json());
-	data.insert("page-name".to_string(), "compare".to_json());
-    data.insert("title".to_string(), "Compare!".to_json());
-
+	data.insert("page_name".to_string(), "compare".to_json());
     resp.set_mut(Template::new("page/compare", data)).set_mut(status::Ok);
 
     Ok(resp)
@@ -155,9 +168,7 @@ fn stats(_: &mut Request) -> IronResult<Response> {
 	base_page_data(&mut data, "stats");
 
 	data.insert("parent".to_string(), "page_template".to_json());
-	data.insert("page-name".to_string(), "stats".to_json());
-    data.insert("title".to_string(), "Stats!".to_json());
-
+	data.insert("page_name".to_string(), "stats".to_json());
     resp.set_mut(Template::new("page/stats", data)).set_mut(status::Ok);
 
     Ok(resp)
@@ -203,6 +214,7 @@ fn main() {
     router.get("/page/search", search);
     router.get("/page/compare", compare);
     router.get("/page/stats", stats);
+    router.get("/page/about", about);
 
     let mut chain = Chain::new(router);
     chain.link_after(Custom404);
