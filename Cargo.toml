@@ -9,7 +9,7 @@ router = "*"
 handlebars-iron = "*"
 staticfile = "*"
 mount = "*"
-rustless = "*"
+urlencoded = "*"
 
 maplit = "*"
 serde = "*"
@@ -17,3 +17,5 @@ serde_json = "*"
 
 rustc-serialize = "*"
 env_logger = "*"
+
+uuid = { version = "*", features = ["v4"] }

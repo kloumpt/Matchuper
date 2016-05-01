@@ -26,7 +26,7 @@
 #query-input {
 	border: unset;
 	outline:0;
-	
+
 }
 
 #query-input, .page-title {
@@ -36,79 +36,83 @@
 	margin-bottom: 0;
 	padding-bottom: 0.25em;
 	border-bottom: 1px solid #666;
-	
+
 	text-align: center;
 	font-size: 1.5em;
 	display: inline-block;
 }
 
 
-.search-results-table {
-	width: 100%;
+.search-results-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*! width: 100%; */
+	/*! padding-bottom: 2em; */
 	background-color: #666;
-	display: table;
-	padding-bottom: 2em;
+	margin: auto;
 }
 
 
-.search-results-row {
-	display: table-row;
-	min-width: 100%;
-	min-height: 100%;
-}
 
 
 .search-results-item {
 	background-color: #666;
-	display: table-cell;
-	padding-top: 2em;
-	padding-bottom: 1em;
+	display: flex;
+	padding: 1em;
+	flex: 1 0 calc(128px + 2em);
+  box-sizing: border-box;  
+	
+	width: calc(128px + 2em);
+	height: calc(128px + 2em);
+	max-width: calc(128px + 2em);
+	
 }
+
 
 
 .search-result {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
   flex-direction: column;
-	
-  flex: 1;
+
   align-self: auto;
-	
-	width: 128px;
-	height: 128px;
-	
+
+	width: 100%;
+	height: 100%;
+
 	margin: auto;
-	
+
 	background-color: #FFF;
 	word-wrap: break-word;
 	border-radius: 3px;
 	box-shadow: 2px 4px 5px 2px rgba(0, 0, 0, 0.5);
-	
+
 }
 
 .search-result-info{
   flex: 1;
   align-self: auto;
 	flex-grow: 2;
-	
+
 	align-items: center;
-	
+
 	background-image: url(/img/Film_strip.png);
 	background-size: 100% 100%;
 }
 
 .search-result-buttons{
   display: flex;
-	
+
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-content: stretch;
   align-items: stretch;
   flex-direction: row;
-	
+
   flex: 0.5;
   align-self: auto;
 	align-items: center;
@@ -116,11 +120,11 @@
 
 
 .search-result-button{
-	
+
   flex: 1;
   align-self: auto;
-	
-	
+
+
 }
 
 .search-result-button{
@@ -139,5 +143,3 @@
 	text-decoration: none;
 	box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
-
-
